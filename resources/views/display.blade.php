@@ -53,7 +53,6 @@
             transform: scale(1.2);
         }
 
-
         .table-responsive {
             max-height: 600px;
             overflow-y: auto;
@@ -70,8 +69,6 @@
 </head>
 
 <body>
-
-
     <div class="container my-5">
         <form action="{{ route('users.deleteMultiple') }}" method="POST">
             @csrf

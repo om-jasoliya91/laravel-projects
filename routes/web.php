@@ -23,5 +23,6 @@ Route::middleware(['authCheck'])->group(function () {
 
     // web.php
     Route::delete('/users/delete-multiple', [RegisterController::class, 'deleteMultiple'])->name('users.deleteMultiple');
+    // Logout
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');  
 });
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

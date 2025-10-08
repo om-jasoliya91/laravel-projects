@@ -51,7 +51,6 @@
                                 </div>
                             </div>
 
-
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Date of Birth:</label>
@@ -76,7 +75,6 @@
                                     @enderror
                                 </div>
                             </div>
-
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
@@ -146,7 +144,6 @@
                                 </div>
                             </div>
 
-
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Password:</label>
@@ -165,7 +162,6 @@
                                     </div>
                                 </div>
                             </div>
-
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
@@ -196,7 +192,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

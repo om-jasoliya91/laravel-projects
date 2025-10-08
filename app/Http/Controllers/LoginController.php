@@ -20,23 +20,22 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
+
         $user = Employee::where('email', $request->email)->first();
-        // echo "<pre>";
-        // print_r($user);
-        // echo "</pre>";
-        // exit;
+
         if ($user && Hash::check($request->password, $user->password)) {
             $request->session()->put('user_id', $user->id);
             $request->session()->put('user_name', $user->name);
 
             return redirect('/display')->with('success', 'Login Successful');
         }
-        return redirect()->back()->with('error', 'Email and password does not match');
+
+        return redirect('/login')->with('error', 'Email and password do not match');
     }
 
     public function logout()
     {
-        Session::flush();
-        return redirect('/login')->with('success', 'Logged Out SuccessFully');
+        Session::flush();  // remove all session data
+        return redirect('/login')->with('success', 'Logged out successfully');
     }
 }

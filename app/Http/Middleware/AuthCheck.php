@@ -8,16 +8,19 @@ use Closure;
 
 class AuthCheck
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->session()->has('user_id')) {
-            return redirect('/login')->with('error', 'please  login again');
+            // if session not set, redirect to login
+            return redirect('/login')->with('error', 'Please login again.');
         }
-        return $next($request);
+
+        $response = $next($request);
+
+        // prevent browser back after logout
+        return $response
+            ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
+            ->header('Pragma', 'no-cache')
+            ->header('Expires', '0');
     }
 }
