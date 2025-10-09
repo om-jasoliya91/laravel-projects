@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Management</title>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+        @section('title', 'Users List')
+    </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         table.table thead th {
@@ -69,6 +73,7 @@
 </head>
 
 <body>
+@section('content')
     <div class="container my-5">
         <form action="{{ route('users.deleteMultiple') }}" method="POST">
             @csrf
@@ -137,10 +142,9 @@
                 onclick="return confirm('Are you sure you want to delete selected users?')">
                 Delete Selected
             </button>
-
-
         </form>
     </div>
 </body>
 
 </html>
+@endsection
