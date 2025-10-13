@@ -32,6 +32,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'name',
+        // here i add name field in hidden so i cannot not get from database
     ];
 
     /**

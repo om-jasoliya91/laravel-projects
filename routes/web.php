@@ -49,3 +49,5 @@ use App\Http\Controllers\UserController;
 
 // Route to create a user and see accessor in action
 Route::get('/create-user', [UserController::class, 'index']);
+
+Route::get('/get-data', [UserController::class, 'hello']);
