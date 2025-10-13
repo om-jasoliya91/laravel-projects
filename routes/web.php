@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,7 +26,7 @@ Route::middleware(['authCheck'])->group(function () {
     // web.php
     Route::delete('/users/delete-multiple', [RegisterController::class, 'deleteMultiple'])->name('users.deleteMultiple');
     // Logout
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');  
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
 
@@ -37,3 +38,11 @@ Route::get('/set-cookie', function () {
     return $response;
 });
 
+Route::get('/get-cookie', function (Request $request) {
+    $value = $request->cookie('user_preference');
+    return $value ? 'Cookie Value: ' . $value : 'Cookie not found';
+});
+
+Route::get('/delete-cookie', function () {
+    return response('Cookie deleted successfully')->cookie('user_preference', '', -1);
+});
