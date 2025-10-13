@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
+    
     public function loginView()
     {
         return view('login');
@@ -38,4 +39,6 @@ class LoginController extends Controller
         Session::flush();  // remove all session data
         return redirect('/login')->with('success', 'Logged out successfully');
     }
+
+    
 }

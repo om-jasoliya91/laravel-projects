@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Response;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,3 +27,13 @@ Route::middleware(['authCheck'])->group(function () {
     // Logout
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');  
 });
+
+
+
+Route::get('/set-cookie', function () {
+    $minutes = 60;
+    $response = new Response('Cookie set successfully');
+    $response->withCookie(cookie('user_preference', 'dark_mode', $minutes));
+    return $response;
+});
+
