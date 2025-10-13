@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,8 +29,6 @@ Route::middleware(['authCheck'])->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-
-
 Route::get('/set-cookie', function () {
     $minutes = 60;
     $response = new Response('Cookie set successfully');
@@ -46,3 +44,8 @@ Route::get('/get-cookie', function (Request $request) {
 Route::get('/delete-cookie', function () {
     return response('Cookie deleted successfully')->cookie('user_preference', '', -1);
 });
+
+use App\Http\Controllers\UserController;
+
+// Route to create a user and see accessor in action
+Route::get('/create-user', [UserController::class, 'index']);
