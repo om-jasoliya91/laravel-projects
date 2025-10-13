@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Validation\Rules\Unique;
 
 class User extends Authenticatable
 {
@@ -48,6 +49,17 @@ class User extends Authenticatable
 
     public function getNameAttribute($value)
     {
-        return strtoupper($value);
+        // return strtoupper($value);
+        return ucfirst($value);
     }
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'name' => 'string',
+        'password' => 'hashed',
+    ];
+
+    // $casts is not for validation rules like unique.
+    // You should not include 'email'=>'unique:users.email' in $casts.
+    // $casts only handles automatic type casting for attributes: e.g., string, boolean, array, datetime, hashed, etc.
 }

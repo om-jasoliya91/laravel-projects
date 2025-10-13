@@ -11,13 +11,13 @@ class UserController extends Controller
     {
         // Create a new user instance
         $user = new User();
-        $user->name = 'Om Jasoliya';  // accessor will affect retrieval
-        $user->email = 'omjasoliya@gmail.com';
-        $user->password = '123456';   // will be automatically hashed using 'password' cast
+        $user->name = 'omjasoliya';  // accessor will affect retrieval
+        $user->email = 'omjasoliya2@gmail.com';
+        $user->password = '123456';  // will be automatically hashed using 'password' cast
 
         $user->save();
 
         // Access the name attribute to see the accessor in action
-        return "Saved User Name (Uppercase via Accessor): " . $user->name;
+        return 'Saved User Name (Uppercase via Accessor): ' . $user->name;
     }
 }
