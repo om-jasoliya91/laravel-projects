@@ -38,7 +38,7 @@ class RegisterController extends Controller
             $filename = time() . '_' . $file->getClientOriginalName();
 
             // Store the file in storage/app/public/uploads
-            $path = $file->storeAS('uploads', $filename, 'public');
+            $path = $request->file('profile')->store('uploads', 'public');
 
             // Save the relative path in DB (uploads/filename.jpg)
             $validated['profile'] = $path;

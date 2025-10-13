@@ -18,7 +18,7 @@ Route::post('/login', [LoginController::class, 'authentication']);
 Route::middleware(['authCheck'])->group(function () {
     Route::get('/display', [RegisterController::class, 'display']);
     // Route::get('/edit/{id}', [RegisterController::class, 'edit']);
-    Route::get('/edit', [RegisterController::class, 'editView']);
+    Route::get('/edit/{id}', [RegisterController::class, 'editView']);
     Route::put('/edit/{id}', [RegisterController::class, 'edit']);
 
     // web.php
