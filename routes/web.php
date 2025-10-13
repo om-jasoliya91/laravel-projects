@@ -52,3 +52,11 @@ Route::get('/create-user', [UserController::class, 'index']);
 
 Route::get('/get-data', [UserController::class, 'hello']);
 Route::get('/get-view', [UserController::class, 'show']);
+Route::get('/users/index', [UserController::class, 'redis'])->name('users.redis');
+
+// sudo apt update
+// sudo apt install redis-server
+// sudo systemctl enable redis-server
+// sudo systemctl start redis-server
+Route::get('/test-redis', [UserController::class, 'testRedis']);
+// Route::get('/users/index', [UserController::class, 'redis'])->name('users.redis'); --- IGNORE ---
