@@ -20,8 +20,7 @@ class UserController extends Controller
         return 'Saved User Name (Uppercase via Accessor): ' . $user->name;
     }
 
-
-    protected $hidden = ['password','name','remember_token'];
+    protected $hidden = ['password', 'name', 'remember_token'];
     // protected $visible = ['name', 'email'];
 
     public function hello()
@@ -42,4 +41,19 @@ class UserController extends Controller
 
         return response()->json(User::all());
     }
+
+    public function show()
+    {
+        // Correct: returns Paginator
+        $users = User::paginate(10);  // 10 users per page
+
+        return view('user', compact('users'));
+    }   
+    //  public function show()
+    // {
+    //     // Paginate 10 users per page
+    //     $users = User::paginate(10);
+
+    //     return view('user', compact('users'));
+    // }
 }

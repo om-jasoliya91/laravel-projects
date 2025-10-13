@@ -51,3 +51,4 @@ use App\Http\Controllers\UserController;
 Route::get('/create-user', [UserController::class, 'index']);
 
 Route::get('/get-data', [UserController::class, 'hello']);
+Route::get('/get-view', [UserController::class, 'show']);
