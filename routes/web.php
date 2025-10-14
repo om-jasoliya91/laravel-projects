@@ -60,3 +60,11 @@ Route::get('/users/index', [UserController::class, 'redis'])->name('users.redis'
 // sudo systemctl start redis-server
 Route::get('/test-redis', [UserController::class, 'testRedis']);
 // Route::get('/users/index', [UserController::class, 'redis'])->name('users.redis'); --- IGNORE ---
+
+
+use App\Http\Resources\UserCollection;
+use App\Models\User;
+ 
+Route::get('/user/{id}', function (string $id) {
+    return new UserCollection(User::findOrFail($id));
+});
